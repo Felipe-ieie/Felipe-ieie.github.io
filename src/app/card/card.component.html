@@ -1,0 +1,29 @@
+<header>
+  <img src="assets/cadeado.jpg" class="cadeado">
+  <h1 class="title">{{data.feed?.title}}</h1>
+</header>
+
+
+
+<div class="container">
+<h1 class="center">&#10052; {{data.feed?.title}}</h1>
+<main class="content">
+  <ul class="card-ul">
+    <li *ngFor="let item of data?.items" class="card">
+      {{item.title}}
+      <button class="pure-button" *ngIf="playing.link == item.enclosure.link" type="button" (click)="stop()">■</button>
+      <button class="pure-button" *ngIf="playing.link != item.enclosure.link" type="button" (click)="play(item)">▶</button>
+    </li>
+  </ul>
+</main>
+</div>
+<audio #player class="player" preload="none" [controls]="!!playing.link"></audio>
+
+<ul class="pagination">
+  <li><a href="#">❮</a></li>
+  <li><a href="#">❯</a></li>
+</ul>
+
+<footer>
+  <p>&copy; 2023 segurancaLegal. Todos os direitos reservados.</p>
+</footer>
